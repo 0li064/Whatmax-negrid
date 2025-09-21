@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Whatmax - AI-Powered Software & Cloud Solutions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --secondary: #0ea5e9;
+            --accent: #8b5cf6;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f1f5f9;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: #e0f2fe;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: var(--accent);
+            color: white;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: #7c3aed;
+            transform: translateY(-2px);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid white;
+        }
+        
+        .btn-outline:hover {
+            background-color: white;
+            color: var(--primary);
+        }
+        
+        .hero {
+            padding: 100px 0;
+            background: linear-gradient(rgba(37, 99, 235, 0.9), rgba(14, 165, 233, 0.9)), url('https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3') no-repeat center center/cover;
+            color: white;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 36px;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .section-title p {
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto;
+            color: #64748b;
+        }
+        
+        .problems {
+            background-color: white;
+        }
+        
+        .problem-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .problem-card {
+            background-color: var(--light);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .problem-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .problem-card i {
+            font-size: 40px;
+            color: var(--danger);
+            margin-bottom: 20px;
+        }
+        
+        .problem-card h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+        
+        .solutions {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .solution-content {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .solution-text {
+            flex: 1;
+            min-width: 300px;
+            padding-right: 40px;
+        }
+        
+        .solution-image {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .solution-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+        }
+        
+        .features {
+            background-color: white;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background-color: var(--light);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-icon {
+            background-color: var(--primary);
+            color: white;
+            font-size: 24px;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .feature-content {
+            padding: 25px;
+        }
+        
+        .feature-content h3 {
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        .pricing {
+            background-color: #f8fafc;
+        }
+        
+        .pricing-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .pricing-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .pricing-card:hover {
+            transform: scale(1.05);
+        }
+        
+        .pricing-card h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        .price {
+            font-size: 40px;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 20px;
+        }
+        
+        .price span {
+            font-size: 16px;
+            font-weight: normal;
+        }
+        
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 25px;
+        }
+        
+        .pricing-features li {
+            padding: 8px 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .cta {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            text-align: center;
+            padding: 100px 0;
+        }
+        
+        .cta h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        
+        .cta p {
+            font-size: 20px;
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: var(--secondary);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-column a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #334155;
+            color: #94a3b8;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .solution-content {
+                flex-direction: column;
+            }
+            
+            .solution-text {
+                padding-right: 0;
+                margin-bottom: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <i class="fas fa-brain"></i>
+                    <span>Whatmax</span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#problems">Problems</a></li>
+                    <li><a href="#solutions">Solutions</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <a href="#signup" class="btn btn-outline">Get Started</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>AI-Powered Cloud & Software Solutions</h1>
+            <p>Revolutionizing how businesses leverage cloud computing, AI development, and cybersecurity with our innovative NetGrid AI technology</p>
+            <a href="#pricing" class="btn">Explore Plans</a>
+        </div>
+    </section>
+
+    <section id="problems" class="problems">
+        <div class="container">
+            <div class="section-title">
+                <h2>Current Market Problems</h2>
+                <p>Businesses today face significant challenges in cloud computing, AI development, and cybersecurity</p>
+            </div>
+            <div class="problem-cards">
+                <div class="problem-card">
+                    <i class="fas fa-money-bill-wave"></i>
+                    <h3>High Cloud Costs</h3>
+                    <p>Businesses struggle with escalating expenses from AWS, Azure, and GCP without proportional returns on investment.</p>
+                </div>
+                <div class="problem-card">
+                    <i class="fas fa-code"></i>
+                    <h3>Limited AI Coding Tools</h3>
+                    <p>Developers lack access to comprehensive AI-powered tools that streamline coding, testing, and deployment processes.</p>
+                </div>
+                <div class="problem-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Cybersecurity Threats</h3>
+                    <p>Increasingly sophisticated malware and cyberattacks threaten business continuity and data security.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="solutions" class="solutions">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Innovative Solutions</h2>
+                <p>Whatmax addresses these challenges with cutting-edge AI technology and affordable pricing</p>
+            </div>
+            <div class="solution-content">
+                <div class="solution-text">
+                    <h3>NetGrid AI Powered Platform</h3>
+                    <p>Whatmax provides an all-in-one cloud and software solution powered by our proprietary NetGrid AI technology. Our platform automates coding, testing, and deployment processes while providing self-defending cybersecurity that detects and reverses malware.</p>
+                    <p>We offer free website development with affordable hosting options and flexible subscription pricing designed for individuals, SMEs, and enterprises.</p>
+                    <a href="#features" class="btn">Learn More</a>
+                </div>
+                <div class="solution-image">
+                    <img src="https://images.unsplash.com/photo-1677442135135-416f8aa26a5b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="AI Visualization">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Products & Services</h2>
+                <p>Comprehensive solutions for all your technology needs</p>
+            </div>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Productivity Suite</h3>
+                        <p>Email, storage, docs, and video conferencing tools designed for seamless collaboration and productivity.</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Cloud Services</h3>
+                        <p>VMs, databases, storage, and DevOps pipelines with scalable infrastructure and competitive pricing.</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>AI & ML Tools</h3>
+                        <p>Training, APIs for vision, NLP, speech, and advanced machine learning capabilities for your applications.</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-virus"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Security Solutions</h3>
+                        <p>AI-powered malware detection and reversal technology to protect your business from cyber threats.</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Developer Tools</h3>
+                        <p>What Studio Code with NetGrid AI integration, offering 2 free hours of AI coding assistance daily.</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Web Development</h3>
+                        <p>Free website development with paid deployment options to establish your online presence quickly.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="pricing">
+        <div class="container">
+            <div class="section-title">
+                <h2>Simple, Transparent Pricing</h2>
+                <p>Flexible plans designed for businesses of all sizes</p>
+            </div>
+            <div class="pricing-cards">
+                <div class="pricing-card">
+                    <h3>Basic Subscription</h3>
+                    <div class="price">$1 <span>/day</span></div>
+                    <ul class="pricing-features">
+                        <li>2 hours daily NetGrid AI access</li>
+                        <li>Basic cloud storage (50GB)</li>
+                        <li>Email support</li>
+                        <li>Standard security</li>
+                    </ul>
+                    <a href="#signup" class="btn">Get Started</a>
+                </div>
+                <div class="pricing-card">
+                    <h3>Weekly Plan</h3>
+                    <div class="price">$5 <span>/week</span></div>
+                    <ul class="pricing-features">
+                        <li>All Basic features</li>
+                        <li>Unlimited NetGrid AI access</li>
+                        <li>Enhanced cloud storage (200GB)</li>
+                        <li>Priority support</li>
+                    </ul>
+                    <a href="#signup" class="btn">Get Started</a>
+                </div>
+                <div class="pricing-card">
+                    <h3>Monthly Plan</h3>
+                    <div class="price">$25 <span>/month</span></div>
+                    <ul class="pricing-features">
+                        <li>All Weekly features</li>
+                        <li>Advanced security suite</li>
+                        <li>1TB cloud storage</li>
+                        <li>24/7 dedicated support</li>
+                    </ul>
+                    <a href="#signup" class="btn">Get Started</a>
+                </div>
+                <div class="pricing-card">
+                    <h3>Annual Plan</h3>
+                    <div class="price">$210 <span>/year</span></div>
+                    <ul class="pricing-features">
+                        <li>All Monthly features</li>
+                        <li>Premium AI capabilities</li>
+                        <li>Unlimited storage</li>
+                        <li>Personal account manager</li>
+                        <li>Two months free</li>
+                    </ul>
+                    <a href="#signup" class="btn">Get Started</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta" id="signup">
+        <div class="container">
+            <h2>Ready to Transform Your Business?</h2>
+            <p>Join thousands of businesses leveraging Whatmax's AI-powered platform for their cloud, software, and security needs.</p>
+            <a href="#" class="btn">Sign Up Now</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Whatmax</h3>
+                    <p>AI-powered cloud and software solutions for the modern business.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Products</h3>
+                    <ul>
+                        <li><a href="#">Cloud Services</a></li>
+                        <li><a href="#">AI & ML Tools</a></li>
+                        <li><a href="#">Cybersecurity</a></li>
+                        <li><a href="#">Developer Tools</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Company</h3>
+                    <ul>
+    
